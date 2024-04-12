@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="../src/quizz_library.js"></script>
+        <link rel="stylesheet" href="../src/quizz_library.css">
+        <style>
+            ul { padding: 0; }
+            li { margin: 0.3em;}
+            body { width: 50%; margin: auto; background: linear-gradient(150deg, rgb(220, 200, 177) 0%, rgb(255, 255, 255) 50%); }
+        </style>
+
+
+        <script>
+let quizz_1 = 
+`- [ ] A cub
+- [x] A kit
+- [ ] A calf
+- [ ] A pinkie`
+
+let quizz_2 =
+`- [x] A cat
+ - [ ] A hawk
+ - [x] A whale
+ - [x] A kangooroo
+ - [ ] A bee`
+
+
+let quizz_3 =
+`- [ ] static/Buisson_ardent.jpg
+ - [x] static/banana.jpg
+ - [ ] static/Efeu-frucht.jpg`
+
+        </script>
+    </head>
+    <body>
+        <h1>Quizz library demo</h1>
+    
+        <!-- Single answer -->
+        <div id="1" class="one-answer-quizz answer-quizz flex flex-col">
+            <h3>What is the name of the baby of the fox?</h3>
+            <p style="margin: 0; font-size: 0.8em"><i>Single answer</i></p>
+            <div id="quizz-content"></div>
+            <button class="submit-quizz">Submit</button>
+            <script >
+                {
+                    let quizzId = 1
+                    let choices = quizz.parseInput(quizz_1)
+                    quizz.storeQuizz(quizzId, choices)
+                    let quizz_div = document.getElementById(quizzId).getElementsByTagName("div")[0]
+                    quizz.buildSingleChoiceQuizz(quizzId, quizz_div, choices)
+                }
+            </script>
+        </div>
+
+        <br />
+
+        <!-- Multi answer -->
+        <div id="2" class="multi-answer-quizz answer-quizz flex flex-col">
+            <h3>Which of these belong to the mammals ?</h3>
+            <p style="margin: 0; font-size: 0.8em"><i>Multitple answers</i></p>
+            <div id="quizz-content"></div>
+            <button class="submit-quizz">Submit</button>
+            <script >
+                {
+                    let quizzId = 2;
+                    let choices = quizz.parseInput(quizz_2);
+                    quizz.storeMultiQuizz(quizzId, choices);
+                    
+                    let quizz_div = document.getElementById("2").getElementsByTagName("div")[0]
+                    console.log("Building quizz with id " + quizzId)
+                    quizz.buildMultiChoicesQuizz(quizzId, quizz_div, choices)
+                }
+            </script>
+        </div>
+
+
+        <!-- Image choice -->
+        <div id="3" class="one-answer-quizz answer-quizz flex flex-col">
+            <h3>Select the edible fruits</h3>
+            <p style="margin: 0; font-size: 0.8em"><i>Multitple answers</i></p>
+            <div id="quizz-content"></div>
+            <button class="submit-quizz">Submit</button>
+            <script >
+                {
+                    let quizzId = 3;
+                    let choices = quizz.parseInput(quizz_3)
+                    quizz.storeMultiQuizz(quizzId, choices);
+                    
+                    let quizz_div = document.getElementById("3").getElementsByTagName("div")[0]
+                    quizz.buildImageQuizz(quizzId, quizz_div, choices)
+                }
+            </script>
+        </div>
+    </body>
+</html>
