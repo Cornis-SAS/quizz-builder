@@ -1,5 +1,8 @@
 # Quizz builder
 
+![demo](demo.png)
+
+
 This repo contains a little library to build quizzes in JavaScript, to be embeded in any website. It supports several types of quizzes:
  - Single answer
  - Multiple answer
@@ -37,8 +40,6 @@ The [src/quizz_library.css](src/quizz_library.css) provides default CSS styling,
 # Demo
 
 A demo is available in [demo/index.html](demo/index.html). Simply clone the repository and open the file to view it and interact with the quizz.
-
-![demo](demo.png)
 
 
 # Hugo integration
