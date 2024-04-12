@@ -1,0 +1,15 @@
+<div id="{{ .Get 0 }}" class="one-answer-quizz answer-quizz flex flex-col">
+    <p style="margin: 0; font-size: 0.8em"><i>Single answer</i></p>
+    <div id="quizz-content"></div>
+    <button class="submit-quizz">Submit</button>
+    <script >
+        {
+            let quizzId = {{ .Get 0 }}
+            let choices = quizz.parseInput("{{ .Inner }}")
+            quizz.storeQuizz(quizzId, choices)
+            
+            let quizz_div = document.getElementById("{{ .Get 0 }}").getElementsByTagName("div")[0]
+            quizz.buildSingleChoiceQuizz(quizzId, quizz_div, choices)
+        }
+    </script>
+</div>

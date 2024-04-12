@@ -1,0 +1,29 @@
+<!-- Shortcode should be called like -->
+<!-- clickable_image id "path/to/image" n_rows n_cols correct_selections -->
+<!-- Ex: clickable_image 123 "/blade_dark.JPG" 5 5 (0,1);(1,1);(2,2) -->
+
+{{ $id := .Get 0 }}
+{{ $cols := .Get 2 }}
+{{ $rows := .Get 3 }}
+
+
+
+<div class="clickable-image-quizz flex flex-col">
+    <div id="{{ $id }}" class="clickable-image">
+        <img src="{{ .Get 1 }}" class="m-0" /><!-- TODO replace with ressource -->
+        <!-- Create a div of type grid -->
+        <!-- Then fill it with clickable divs -->
+        <div class="clickable-grid w-100 h-100 bg-blue" style="grid-template-columns: repeat({{ $cols }}, minmax(0, 1fr));">
+            {{ range seq $cols }}
+                {{ range seq $rows }}
+                    <div class="image-part" onclick="quizz.onImageClick(this)"></div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+    <button class="submit-quizz m-4" onclick="quizz.checkImageQuizz({{ $id }})">Submit</button>
+</div>
+
+<script>
+    quizz.register_correct_selections({{ $id }}, {{ $rows }}, {{ $cols }}, "{{ .Get 4 }}", "{{ .Get 5 }}")
+</script>

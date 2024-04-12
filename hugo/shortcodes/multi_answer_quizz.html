@@ -1,0 +1,16 @@
+<div id="{{ .Get 0 }}" class="multi-answer-quizz answer-quizz flex flex-col">
+    <p style="margin: 0; font-size: 0.8em"><i>Multitple answers</i></p>
+    <div id="quizz-content"></div>
+    <button class="submit-quizz">Submit</button>
+    <script >
+        {
+            let quizzId = {{ .Get 0 }};
+            let choices = quizz.parseInput("{{ .Inner }}")
+            quizz.storeMultiQuizz(quizzId, choices);
+            
+            let quizz_div = document.getElementById("{{ .Get 0 }}").getElementsByTagName("div")[0]
+            console.log("Building quizz with id " + quizzId)
+            quizz.buildMultiChoicesQuizz(quizzId, quizz_div, choices)
+        }
+    </script>
+</div>
